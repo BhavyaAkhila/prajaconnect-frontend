@@ -6,8 +6,9 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.25rem;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 0.75rem;
+  box-shadow: var(--shadow);
 }
 
 .report-header {
@@ -33,22 +34,22 @@
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
 .status-open {
-  background: rgba(255, 173, 31, 0.2);
+  background: var(--warning-soft);
   color: var(--warning);
 }
 
 .status-progress {
-  background: rgba(29, 155, 240, 0.2);
+  background: var(--accent-soft);
   color: var(--accent);
 }
 
 .status-resolved {
-  background: rgba(0, 186, 124, 0.2);
+  background: var(--success-soft);
   color: var(--success);
 }

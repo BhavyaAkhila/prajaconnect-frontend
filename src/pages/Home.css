@@ -1,12 +1,16 @@
 .home {
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
+  background: var(--bg);
 }
 
 .hero {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2.5rem 1rem 2rem;
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.5rem;
+  background: linear-gradient(180deg, var(--bg-pink) 0%, transparent 100%);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
 }
 
 .hero-title {
@@ -14,6 +18,7 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--text);
 }
 
 .hero-lead {
@@ -38,6 +43,7 @@
   font-size: 1.35rem;
   margin-bottom: 1.25rem;
   font-family: var(--font-display);
+  color: var(--text);
 }
 
 .roles-grid {
@@ -49,14 +55,16 @@
 .role-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
 }
 
 .role-card:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .role-card-icon {
@@ -68,6 +76,7 @@
 .role-card h3 {
   font-size: 1.1rem;
   margin-bottom: 0.35rem;
+  color: var(--text);
 }
 
 .role-card p {

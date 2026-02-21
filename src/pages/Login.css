@@ -4,23 +4,24 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: linear-gradient(160deg, var(--bg) 0%, var(--surface) 100%);
+  background: linear-gradient(160deg, var(--bg-pink) 0%, var(--bg-soft) 50%, #fff 100%);
 }
 
 .login-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg);
 }
 
 .login-title {
   font-family: var(--font-display);
   font-size: 1.75rem;
   margin-bottom: 0.25rem;
+  color: var(--text);
 }
 
 .login-subtitle {
@@ -34,14 +35,15 @@
   margin-bottom: 1rem;
   font-weight: 500;
   font-size: 0.9rem;
+  color: var(--text);
 }
 
 .login-form input,
 .login-form select {
   width: 100%;
   margin-top: 0.35rem;
-  padding: 0.65rem 0.85rem;
-  background: var(--bg);
+  padding: 0.75rem 1rem;
+  background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text);
@@ -52,6 +54,7 @@
 .login-form select:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .role-desc {
@@ -62,6 +65,7 @@
 
 .btn-block {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
+  margin-top: 0.25rem;
 }
