@@ -1,0 +1,108 @@
+import React, { useState } from 'react'
+import { Outlet, NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import './Layout.css'
+
+export default function Layout() {
+  const { user, logout, switchRole, ROLES } = useAuth()
+  const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [roleMenuOpen, setRoleMenuOpen] = useState(false)
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+    setMenuOpen(false)
+  }
+
+  const roleLinks = {
+    citizen: [
+      { to: '/citizen', label: 'Dashboard' },
+      { to: '/citizen/report', label: 'Report issue' },
+      { to: '/citizen/reports', label: 'My reports' },
+    ],
+    politician: [
+      { to: '/politician', label: 'Dashboard' },
+      { to: '/politician/post', label: 'Post update' },
+      { to: '/politician/concerns', label: 'Citizen concerns' },
+    ],
+    admin: [
+      { to: '/admin', label: 'Dashboard' },
+      { to: '/admin/users', label: 'User management' },
+    ],
+    moderator: [
+      { to: '/moderator', label: 'Dashboard' },
+      { to: '/moderator/queue', label: 'Moderation queue' },
+    ],
+  }
+
+  const links = user ? roleLinks[user.role] || [] : []
+
+  return (
+    <div className="layout">
+      <header className="header">
+        <NavLink to="/" className="logo">
+          <span className="logo-icon">◉</span>
+          <span className="logo-text">Citizen & Politician</span>
+        </NavLink>
+        <nav className="nav">
+          <NavLink to="/" end className="nav-link">Home</NavLink>
+          {user && links.map(({ to, label }) => (
+            <NavLink key={to} to={to} className="nav-link" onClick={() => setMenuOpen(false)}>
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        <div className="header-actions">
+          {user ? (
+            <>
+              <div className="role-switcher">
+                <button
+                  className="btn btn-ghost role-btn"
+                  onClick={() => setRoleMenuOpen(!roleMenuOpen)}
+                  aria-expanded={roleMenuOpen}
+                >
+                  {ROLES[user.role]}
+                </button>
+                {roleMenuOpen && (
+                  <div className="role-dropdown">
+                    {Object.entries(ROLES).map(([key, label]) => (
+                      <button
+                        key={key}
+                        className="role-option"
+                        onClick={() => { switchRole(key); setRoleMenuOpen(false); navigate('/'); }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <span className="user-name">{user.name}</span>
+              <button className="btn btn-ghost" onClick={handleLogout}>Log out</button>
+            </>
+          ) : (
+            <NavLink to="/login" className="btn btn-primary">Log in</NavLink>
+          )}
+        </div>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </header>
+      {menuOpen && (
+        <div className="mobile-nav">
+          <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+          {links.map(({ to, label }) => (
+            <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</NavLink>
+          ))}
+        </div>
+      )}
+      <main className="main">
+        <Outlet />
+      </main>
+      <footer className="footer">
+        <p>FSAD-PS08 — Improving transparency and responsiveness in governance</p>
+      </footer>
+    </div>
+  )
+}

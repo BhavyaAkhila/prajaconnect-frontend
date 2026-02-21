@@ -1,0 +1,12 @@
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.empty-icon { font-size: 2.5rem; color: var(--success); display: block; margin-bottom: 0.75rem; }
+.empty-state p { color: var(--text-muted); }
+.queue-list { list-style: none; }
+.queue-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 0.5rem; }
+.queue-item-actions { display: flex; gap: 0.5rem; }
