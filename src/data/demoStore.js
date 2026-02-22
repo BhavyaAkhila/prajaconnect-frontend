@@ -1,5 +1,5 @@
 const STORAGE_KEYS = {
-  issues: 'fsad08_issues',
+  issues: 'fsad08_issues_v2',
   updates: 'fsad08_updates',
   users: 'fsad08_users',
 }
@@ -21,8 +21,8 @@ export function getIssues() {
   const issues = get(STORAGE_KEYS.issues)
   if (!issues.length) {
     const seed = [
-      { id: '1', title: 'Street lighting on Oak Ave', category: 'Infrastructure', status: 'open', author: 'Jane', createdAt: Date.now() - 86400000 * 2 },
-      { id: '2', title: 'Park maintenance', category: 'Environment', status: 'in_progress', author: 'John', createdAt: Date.now() - 86400000 },
+      { id: '1', title: 'potholes in hanumanthuwaka junction,vizag', category: 'Infrastructure', status: 'open', author: 'Ramesh', createdAt: Date.now() - 86400000 * 2 },
+      { id: '2', title: 'Park maintenance', category: 'Environment', status: 'in_progress', author: 'Suresh', createdAt: Date.now() - 86400000 },
     ]
     set(STORAGE_KEYS.issues, seed)
     return seed
@@ -42,7 +42,7 @@ export function getUpdates() {
   const updates = get(STORAGE_KEYS.updates)
   if (!updates.length) {
     const seed = [
-      { id: '1', title: 'Budget meeting summary', body: 'Summary of the latest budget discussions...', author: 'Rep. Smith', createdAt: Date.now() - 86400000 },
+      { id: '1', title: 'Budget meeting summary', body: 'Summary of the latest budget discussions...', author: 'Ramesh', createdAt: Date.now() - 86400000 },
     ]
     set(STORAGE_KEYS.updates, seed)
     return seed
@@ -60,8 +60,8 @@ export function addUpdate(update) {
 
 export function getUsers() {
   return get(STORAGE_KEYS.users, [
-    { id: '1', name: 'Jane', role: 'citizen' },
-    { id: '2', name: 'Rep. Smith', role: 'politician' },
+    { id: '1', name: 'Ramesh', role: 'citizen' },
+    { id: '2', name: 'Suresh', role: 'politician' },
   ])
 }
 

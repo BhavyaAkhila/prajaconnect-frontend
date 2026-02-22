@@ -1,16 +1,26 @@
 :root {
+  /* Indian theme - Tricolour inspired */
+  --saffron: #FF9933;
+  --saffron-dark: #E88B2B;
+  --white: #FFFFFF;
+  --green: #138808;
+  --green-dark: #0F7206;
+  --navy: #000080;
   --bg: #ffffff;
-  --bg-soft: #fafafa;
-  --bg-pink: #fdf2f8;
+  --bg-soft: #f8faf5;
+  --bg-saffron-soft: #FFF8F0;
+  --bg-green-soft: #F0F8EE;
   --surface: #ffffff;
-  --surface-hover: #fce7f3;
+  --surface-hover: #FFF8F0;
   --border: #e5e7eb;
   --border-light: #f3f4f6;
   --text: #1f2937;
   --text-muted: #6b7280;
-  --accent: #db2777;
-  --accent-hover: #be185d;
-  --accent-soft: #fce7f3;
+  --accent: #138808;
+  --accent-hover: #0F7206;
+  --accent-soft: #E8F5E6;
+  --accent-secondary: #FF9933;
+  --accent-secondary-soft: #FFF0E0;
   --success: #059669;
   --success-soft: #d1fae5;
   --warning: #d97706;
@@ -20,16 +30,20 @@
   --radius: 12px;
   --radius-lg: 16px;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 40px rgba(219, 39, 119, 0.12);
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-display: 'Fraunces', Georgia, serif;
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 40px rgba(20, 136, 8, 0.12);
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Libre Baskerville', Georgia, serif;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

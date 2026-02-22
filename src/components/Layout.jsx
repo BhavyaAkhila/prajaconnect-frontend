@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import IndianFlag from './IndianFlag'
 import './Layout.css'
 
 export default function Layout() {
@@ -8,6 +9,13 @@ export default function Layout() {
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const [roleMenuOpen, setRoleMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handleLogout = () => {
     logout()
@@ -40,10 +48,10 @@ export default function Layout() {
 
   return (
     <div className="layout">
-      <header className="header">
+      <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
         <NavLink to="/" className="logo">
-          <span className="logo-icon">◉</span>
-          <span className="logo-text">Citizen & Politician</span>
+          <IndianFlag className="logo-flag" width={36} height={24} />
+          <span className="logo-text">PrajaConnect</span>
         </NavLink>
         <nav className="nav">
           <NavLink to="/" end className="nav-link">Home</NavLink>
@@ -100,8 +108,9 @@ export default function Layout() {
       <main className="main">
         <Outlet />
       </main>
-      <footer className="footer">
-        <p>FSAD-PS08 — Improving transparency and responsiveness in governance</p>
+      <footer className="footer footer-enhanced">
+        <div className="footer-brand">PrajaConnect</div>
+        <p className="footer-desc">Bridging citizens and representatives for transparent governance across India.</p>
       </footer>
     </div>
   )
