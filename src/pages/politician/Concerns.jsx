@@ -1,9 +1,9 @@
 import React from 'react'
-import { getIssues } from '../../data/demoStore'
+import { useIssues } from '../../hooks/useApi'
 import './Concerns.css'
 
 export default function Concerns() {
-  const issues = getIssues()
+  const issues = useIssues()
 
   return (
     <div className="concerns page">

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getIssues, getUpdates, getUsers } from '../../data/demoStore'
+import { getUsers } from '../../data/demoStore'
+import { useIssues, useUpdates } from '../../hooks/useApi'
 import './AdminDashboard.css'
 
 export default function AdminDashboard() {
-  const issues = getIssues()
-  const updates = getUpdates()
+  const issues = useIssues()
+  const updates = useUpdates()
   const users = getUsers()
 
   return (

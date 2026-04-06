@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { addUpdate } from '../../data/demoStore'
+import { addUpdateAPI } from '../../hooks/useApi'
 import './PostUpdate.css'
 
 export default function PostUpdate() {
@@ -10,9 +10,9 @@ export default function PostUpdate() {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    addUpdate({ title, body, author: user?.name || 'Politician' })
+    await addUpdateAPI({ title, body, author: user?.name || 'Politician' }, user?.jwt)
     navigate('/politician')
   }
 

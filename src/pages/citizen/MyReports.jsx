@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { getIssues } from '../../data/demoStore'
+import { useIssues } from '../../hooks/useApi'
 import './MyReports.css'
 
 const statusClass = (s) => ({ open: 'status-open', in_progress: 'status-progress', resolved: 'status-resolved' }[s] || '')
 
 export default function MyReports() {
   const { user } = useAuth()
-  const issues = getIssues().filter((i) => i.author === user?.name)
+  const issues = useIssues().filter((i) => i.author === user?.name)
 
   return (
     <div className="my-reports page">

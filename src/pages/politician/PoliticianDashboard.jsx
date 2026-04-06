@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getIssues, getUpdates } from '../../data/demoStore'
+import { useIssues, useUpdates } from '../../hooks/useApi'
 import './PoliticianDashboard.css'
 
 export default function PoliticianDashboard() {
-  const issues = getIssues()
-  const updates = getUpdates()
+  const issues = useIssues()
+  const updates = useUpdates()
 
   return (
     <div className="politician-dashboard page">

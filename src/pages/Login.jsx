@@ -42,7 +42,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!name.trim() || !password.trim()) return
-    login(role, name.trim())
+    login(role, name.trim(), password)
     navigate('/')
   }
 
@@ -143,6 +143,12 @@ export default function Login() {
           </div>
           
           <button type="submit" className="btn btn-primary btn-block">Continue as {ROLES_SLIDES[slideIndex].label}</button>
+          
+          <div className="login-footer" style={{ marginTop: '1rem', textAlign: 'center' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+              Don't have an account? <a href="/register" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Sign Up</a>
+            </p>
+          </div>
         </form>
       </div>
     </div>

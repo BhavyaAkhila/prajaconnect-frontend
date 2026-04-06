@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import Layout from './components/Layout'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Home from './pages/Home'
 import CitizenDashboard from './pages/citizen/CitizenDashboard'
 import ReportIssue from './pages/citizen/ReportIssue'
@@ -26,6 +27,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="citizen" element={<ProtectedRoute roles={['citizen']}><CitizenDashboard /></ProtectedRoute>} />

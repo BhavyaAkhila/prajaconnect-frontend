@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getIssues, getUpdates } from '../../data/demoStore'
+import { useIssues, useUpdates } from '../../hooks/useApi'
 import './CitizenDashboard.css'
 
 export default function CitizenDashboard() {
-  const issues = getIssues()
-  const updates = getUpdates()
+  const issues = useIssues()
+  const updates = useUpdates()
 
   return (
     <div className="citizen-dashboard page">

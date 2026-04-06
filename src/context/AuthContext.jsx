@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState } from 'react'
 const AuthContext = createContext(null)
 
 const ROLES = { admin: 'Admin', citizen: 'Citizen', politician: 'Politician', moderator: 'Moderator' }
+const API_URL = 'http://localhost:8080/api';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
@@ -11,10 +12,44 @@ export function AuthProvider({ children }) {
     return null
   })
 
-  const login = (role, name = 'User') => {
-    const u = { role, name, id: Date.now().toString() }
-    setUser(u)
-    localStorage.setItem('fsad08_user', JSON.stringify(u))
+  const login = async (role, name = 'User', password) => {
+    const email = `${name.toLowerCase().replace(/\s+/g, '')}@prajaconnect.com`;
+    try {
+      let res = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      
+      if (!res.ok) {
+         let regRes = await fetch(`${API_URL}/auth/register`, {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ name, email, password, role })
+         });
+         
+         res = await fetch(`${API_URL}/auth/login`, {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ email, password })
+         });
+      }
+      
+      const data = await res.json();
+      const u = { 
+         name: data.name, 
+         email: data.email, 
+         role: data.role.toLowerCase(), 
+         id: data.id, 
+         jwt: data.token 
+      };
+      
+      setUser(u);
+      localStorage.setItem('fsad08_user', JSON.stringify(u));
+    } catch(err) {
+      console.error("Backend Error:", err);
+      alert("Error talking to backend. Is it running on port 8080?");
+    }
   }
 
   const logout = () => {
@@ -23,10 +58,7 @@ export function AuthProvider({ children }) {
   }
 
   const switchRole = (role) => {
-    if (!user) return
-    const u = { ...user, role }
-    setUser(u)
-    localStorage.setItem('fsad08_user', JSON.stringify(u))
+    // Unsupported in backend unless we do admin operations
   }
 
   return (

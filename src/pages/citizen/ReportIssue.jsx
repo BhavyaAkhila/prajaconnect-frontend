@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { addIssue } from '../../data/demoStore'
+import { addIssueAPI } from '../../hooks/useApi'
 import './ReportIssue.css'
 
 const CATEGORIES = ['Infrastructure', 'Environment', 'Safety', 'Healthcare', 'Education', 'Other']
@@ -13,9 +13,9 @@ export default function ReportIssue() {
   const [category, setCategory] = useState('Infrastructure')
   const [description, setDescription] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    addIssue({ title, category, description, author: user?.name || 'Citizen' })
+    await addIssueAPI({ title, category, description, author: user?.name || 'Citizen' }, user?.jwt)
     navigate('/citizen/reports')
   }
 
