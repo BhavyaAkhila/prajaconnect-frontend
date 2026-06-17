@@ -50,15 +50,7 @@ Install Dependencies
 npm install
 Start Development Server
 npm start
-📂 Project Structure
-src/
-├── components/
-├── pages/
-├── assets/
-├── services/
-├── hooks/
-├── styles/
-└── App.js
+
 🔮 Future Enhancements
 Machine Learning based complaint classification
 Priority prediction for citizen issues
