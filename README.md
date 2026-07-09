@@ -2,7 +2,7 @@
 
 > **A Citizen Engagement Platform for Transparent Governance**
 
-PrajaConnect is a web-based citizen engagement platform that helps bridge the gap between citizens and local authorities. It enables users to report civic issues, raise grievances, and improve communication between communities and government bodies through a simple and user-friendly interface
+PrajaConnect is a web-based citizen engagement platform that helps bridge the gap between citizens and local authorities. It enables users to report civic issues, raise grievances, and improve communication between communities and government bodies through a simple and user-friendly interface.
 
 ---
 
